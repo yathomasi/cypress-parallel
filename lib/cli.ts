@@ -291,6 +291,12 @@ export async function run(argv: string[], env: NodeJS.ProcessEnv, cwd: string) {
       parallelConfiguration.node.count
     );
 
+    debug(
+      `Schedule determined ${util.inspect(
+        schedule.map((group) => group.map((file) => file.file))
+      )}`
+    );
+
     /**
      * Validate the generated schedule.
      */
