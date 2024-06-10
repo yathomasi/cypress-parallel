@@ -47,8 +47,10 @@ import { name, version } from "../package.json";
 
 function determineCypressRunCommand() {
   if (isNpm) {
+    debug("Running: npx cypress run");
     return "npx cypress run";
   } else if (isYarn) {
+    debug("Running: yarn cypress run");
     return "yarn cypress run";
   } else {
     throw new CypressParallelError(
@@ -358,7 +360,7 @@ export async function run(argv: string[], env: NodeJS.ProcessEnv, cwd: string) {
           "--reporter-options",
           JSON.stringify({
             reporterEnabled:
-              "spec, @badeball/cypress-parallel/knapsack-reporter",
+              "spec, @yathomasi/cypress-parallel/knapsack-reporter",
             badeballCypressParallelKnapsackReporterReporterOptions: {
               output:
                 parallelConfiguration.writeKnapsack ??
