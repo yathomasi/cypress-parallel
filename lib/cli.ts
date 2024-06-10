@@ -45,7 +45,11 @@ import { compare } from "./unweighed-strategies/utils";
 
 import { name, version } from "../package.json";
 
-function determineCypressRunCommand() {
+function determineCypressRunCommand(useYarn: boolean = true) {
+  if(useYarn){
+    console.log("Running: yarn cypress run")
+    return "yarn cypress run";
+  }
   if (isNpm) {
     console.log("Running: npx cypress run")
     return "npx cypress run";
@@ -137,6 +141,12 @@ program.version(`${name}-v${version}`, "-v, --version");
 program.allowUnknownOption();
 
 program.option(
+  "--use-yarn",
+  "specifies which package manager to run the command",
+  true
+)
+
+program.option(
   "--cypress-run-command <cmd>",
   "specifies the command to run cypress (in non-interactive mode), defaults to 'npx cypress run' or 'yarn cypress run' depending on how invoked"
 );
@@ -200,8 +210,9 @@ export async function run(argv: string[], env: NodeJS.ProcessEnv, cwd: string) {
     }
 
     let parallelConfiguration: IParallelConfiguration = {
+      useYarn: options.useYarn,
       cypressRunCommand:
-        options.cypressRunCommand || determineCypressRunCommand(),
+        options.cypressRunCommand || determineCypressRunCommand(options.useYarn),
       node,
       unweighedStrategy:
         (await resolveCustomStrategy()) || options.unweighedStrategy,

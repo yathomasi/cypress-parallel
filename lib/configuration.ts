@@ -10,6 +10,7 @@ export interface NodeConfiguration {
 }
 
 export interface IParallelConfiguration {
+  readonly useYarn?: boolean;
   readonly cypressRunCommand: string;
   readonly node: NodeConfiguration;
   readonly knapsack: string;
