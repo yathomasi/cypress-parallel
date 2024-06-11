@@ -45,7 +45,7 @@ import { compare } from "./unweighed-strategies/utils";
 
 import { name, version } from "../package.json";
 
-function determineCypressRunCommand(useYarn: boolean = true) {
+function determineCypressRunCommand(useYarn: boolean = false ) {
   if(useYarn){
     console.log("Running: yarn cypress run")
     return "yarn cypress run";
@@ -143,7 +143,7 @@ program.allowUnknownOption();
 program.option(
   "--use-yarn",
   "specifies which package manager to run the command",
-  true
+  false
 )
 
 program.option(
