@@ -54,8 +54,9 @@ Before(async function ({ gherkinDocument, pickle }) {
   try {
     await fs.access(selfLink, constants.F_OK);
     await fs.unlink(selfLink);
-  } catch {}
-
+  } catch (err) {
+    console.error(err);
+  }
   await fs.symlink(projectPath, selfLink, "dir");
 });
 
