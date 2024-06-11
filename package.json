@@ -1,12 +1,12 @@
 {
-  "name": "@badeball/cypress-parallel",
-  "version": "2.0.0",
-  "author": "Jonas Amundsen",
+  "name": "@yathomasi/cypress-parallel",
+  "version": "2.0.2",
+  "author": "Thomas Kunwar",
   "license": "MIT",
-  "homepage": "https://github.com/badeball/cypress-parallel",
+  "homepage": "https://github.com/yathomasi/cypress-parallel",
   "repository": {
     "type": "git",
-    "url": "https://github.com/badeball/cypress-parallel.git"
+    "url": "https://github.com/yathomasi/cypress-parallel.git"
   },
   "keywords": [
     "cypress",
@@ -21,7 +21,7 @@
     "knapsack-reporter.d.ts"
   ],
   "bin": {
-    "cypress-parallel": "./bin/cypress-parallel"
+    "cypress-parallel": "bin/cypress-parallel"
   },
   "scripts": {
     "clean": "rm -f knapsack-reporter.{js,d.ts} && bash -O globstar -c 'rm -f lib/**/*.{js,d.ts}'",
@@ -31,7 +31,7 @@
     "test": "npm run test:fmt && npm run test:integration",
     "test:fmt": "prettier --ignore-path .gitignore --check '**/*.ts'",
     "test:integration": "cucumber-js",
-    "prepublishOnly": "npm run clean && npm run build && npm run test"
+    "prepublishOnly": "npm run clean && npm run build"
   },
   "dependencies": {
     "@babel/types": "^7.23.0",
