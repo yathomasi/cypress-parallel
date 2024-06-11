@@ -1,12 +1,12 @@
 {
   "name": "@yathomasi/cypress-parallel",
-  "version": "2.0.1-beta.3",
-  "author": "Jonas Amundsen",
+  "version": "2.0.1-beta.4",
+  "author": "Thomas Kunwar",
   "license": "MIT",
-  "homepage": "https://github.com/badeball/cypress-parallel",
+  "homepage": "https://github.com/yathomasi/cypress-parallel",
   "repository": {
     "type": "git",
-    "url": "https://github.com/badeball/cypress-parallel.git"
+    "url": "https://github.com/yathomasi/cypress-parallel.git"
   },
   "keywords": [
     "cypress",
@@ -21,7 +21,7 @@
     "knapsack-reporter.d.ts"
   ],
   "bin": {
-    "cypress-parallel": "./bin/cypress-parallel"                                                                                                                                                                                                   
+    "cypress-parallel": "bin/cypress-parallel"
   },
   "scripts": {
     "clean": "rm -f knapsack-reporter.{js,d.ts} && bash -O globstar -c 'rm -f lib/**/*.{js,d.ts}'",

@@ -1,7 +1,7 @@
 # cypress-parallel
 
-[![Build status](https://github.com/badeball/cypress-parallel/actions/workflows/build.yml/badge.svg)](https://github.com/badeball/cypress-parallel/actions/workflows/build.yml)
-[![Npm package weekly downloads](https://badgen.net/npm/dw/@badeball/cypress-parallel)](https://npmjs.com/package/@badeball/cypress-parallel)
+[![Build status](https://github.com/yathomasi/cypress-parallel/actions/workflows/build.yml/badge.svg)](https://github.com/yathomasi/cypress-parallel/actions/workflows/build.yml)
+[![Npm package weekly downloads](https://badgen.net/npm/dw/@yathomasi/cypress-parallel)](https://npmjs.com/package/@yathomasi/cypress-parallel)
 
 Divides your test files into equal buckets and runs a single bucket. This is
 ideal for parallizing Cypress tests in a CI environment, without relying on
@@ -24,7 +24,7 @@ external services, such as Cypress' Dashboard Service.
 ## Installation
 
 ```
-$ npm install @badeball/cypress-parallel
+$ npm install @yathomasi/cypress-parallel
 ```
 
 ## How it works
@@ -98,21 +98,21 @@ Optionally specified the location of the knapsack file to write.
 Disables outputting knapsack data to the file system. This is always disabled
 when you specify `--reporter` or `--reporter-options` to Cypress. If you
 require custom options and still want to obtain the knapsack output, you need
-to configure `cypress-multi-reporters` with `@badeball/cypress-parallel/knapsack-reporter`
+to configure `cypress-multi-reporters` with `@yathomasi/cypress-parallel/knapsack-reporter`
 yourself.
 
 ### --unweighed-strategy "estimate" | "distribute"
 
 What strategy to utilize if encountering a test file that isn't contained in
 the knapsack. The "estimate" strategy will estimate expected execution time
-based off of file length (line numbers).  The "distribute" strategy will merely
+based off of file length (line numbers). The "distribute" strategy will merely
 distribute unknown files evenly amongst the nodes.
 
 Custom stragies can be implemented using [cusmiconfig][cusmiconfig], as shown below.
 
 ```js
 module.export = {
-  /** @type {import("@badeball/cypress-parallel").UnweighedStrategy} */
+  /** @type {import("@yathomasi/cypress-parallel").UnweighedStrategy} */
   unweighedStrategy(weighedFiles, unweighedFiles, nodeCount) {
     // Implement me.
   },

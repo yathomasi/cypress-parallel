@@ -45,16 +45,16 @@ import { compare } from "./unweighed-strategies/utils";
 
 import { name, version } from "../package.json";
 
-function determineCypressRunCommand(useYarn: boolean = false ) {
-  if(useYarn){
-    console.log("Running: yarn cypress run")
+function determineCypressRunCommand(useYarn: boolean = false) {
+  if (useYarn) {
+    console.log("Running: yarn cypress run");
     return "yarn cypress run";
   }
   if (isNpm) {
-    console.log("Running: npx cypress run")
+    console.log("Running: npx cypress run");
     return "npx cypress run";
   } else if (isYarn) {
-    console.log("Running: yarn cypress run")
+    console.log("Running: yarn cypress run");
     return "yarn cypress run";
   } else {
     throw new CypressParallelError(
@@ -144,7 +144,7 @@ program.option(
   "--use-yarn",
   "specifies which package manager to run the command",
   false
-)
+);
 
 program.option(
   "--cypress-run-command <cmd>",
@@ -212,7 +212,8 @@ export async function run(argv: string[], env: NodeJS.ProcessEnv, cwd: string) {
     let parallelConfiguration: IParallelConfiguration = {
       useYarn: options.useYarn,
       cypressRunCommand:
-        options.cypressRunCommand || determineCypressRunCommand(options.useYarn),
+        options.cypressRunCommand ||
+        determineCypressRunCommand(options.useYarn),
       node,
       unweighedStrategy:
         (await resolveCustomStrategy()) || options.unweighedStrategy,
@@ -354,12 +355,14 @@ export async function run(argv: string[], env: NodeJS.ProcessEnv, cwd: string) {
     );
 
     // log the cypress run command
-    console.log(`cypressRunCommand: ${parallelConfiguration.cypressRunCommand}`)
+    console.log(
+      `cypressRunCommand: ${parallelConfiguration.cypressRunCommand}`
+    );
 
     const parsedRunCmd = parse(parallelConfiguration.cypressRunCommand);
-    
+
     // log parsed cypress run command
-    console.log(`parsedRunCmd: ${parsedRunCmd}`)
+    console.log(`parsedRunCmd: ${parsedRunCmd}`);
 
     if (!parsedRunCmd.every(isString)) {
       throw new Error(
@@ -377,8 +380,8 @@ export async function run(argv: string[], env: NodeJS.ProcessEnv, cwd: string) {
           "--reporter-options",
           JSON.stringify({
             reporterEnabled:
-              "spec, @badeball/cypress-parallel/knapsack-reporter",
-            badeballCypressParallelKnapsackReporterReporterOptions: {
+              "spec, @yathomasi/cypress-parallel/knapsack-reporter",
+            yathomasiCypressParallelKnapsackReporterReporterOptions: {
               output:
                 parallelConfiguration.writeKnapsack ??
                 parallelConfiguration.knapsack,
