@@ -140,6 +140,8 @@ program.version(`${name}-v${version}`, "-v, --version");
 
 program.allowUnknownOption();
 
+program.allowExcessArguments();
+
 program.option(
   "--use-yarn",
   "specifies which package manager to run the command",

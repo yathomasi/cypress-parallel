@@ -28,7 +28,10 @@ export type NodeSchedule = (WeighedFile | UnweighedFile)[];
 export class ConfigurationError extends CypressParallelError {}
 
 export async function resolveCustomStrategy(searchFrom?: string) {
-  const result = await cosmiconfig("cypress-parallel").search(searchFrom);
+  // "global" keeps cosmiconfig v7's search up to the home directory.
+  const result = await cosmiconfig("cypress-parallel", {
+    searchStrategy: "global",
+  }).search(searchFrom);
 
   if (result) {
     const { config: rawConfig } = result;

@@ -57,6 +57,7 @@ Before(async function ({ gherkinDocument, pickle }) {
   } catch (err) {
     console.error(err);
   }
+  await fs.mkdir(path.dirname(selfLink), { recursive: true });
   await fs.symlink(projectPath, selfLink, "dir");
 });
 
